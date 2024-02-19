@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-comments
+      author: your_name
+      changes:
+        - createTable:
+            tableName: comments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: content
+                  type: varchar(1000)
+              - column:
+                  name: blog_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_comments_blog_id
+                    references:
+                      tableName: blogs
+                      columnNames: id
+
